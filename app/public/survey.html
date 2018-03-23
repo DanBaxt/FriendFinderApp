@@ -129,7 +129,7 @@
                     <option value="5">5 (Strongly Agree)</option>
                 </select>
                 <br>
-                <!-- Materialize Modal Trigger/Submit Button -->
+
                 <button type ="submit" data-target="modal1" class="waves-effect waves-light btn modal-trigger cyan lighten-1" id="submitBtn">Submit</button>
             </div>
         </div>
@@ -148,11 +148,10 @@
         </div>
     </div>
 
-<!-- Grabs information and sends it to server -->
+
 <script type="text/javascript">
 $(document).ready(function() {
     $("#submitBtn").on("click", function() {
-        //form validation
         function validateForm() {
             var isValid = true;
             $('.validate').each(function() {
@@ -169,7 +168,6 @@ $(document).ready(function() {
         }
         
         if (validateForm() == true) {
-     
             var newFriend = {
                 name: $('#name').val().trim(),
                 profile: $('#photo').val(),
@@ -190,13 +188,10 @@ $(document).ready(function() {
             var currentURL = window.location.origin;
           
             $.post(currentURL + "/api/friends", newFriend, function(data) {
-            
                 $("#matchName").text(data.matchName);
                 $("#matchPic").attr("src", data.matchProfile);
             });
-  
-                $('.modal').modal();
-         
+            $('.modal').modal();
             $('#name').val("");
             $('#photo').val("");
             $('#q1').val("");

@@ -167,9 +167,9 @@ $(document).ready(function() {
             });
             return isValid;
         }
-        //if everything is filled
+        
         if (validateForm() == true) {
-            //creates a new friend from the values submitted
+     
             var newFriend = {
                 name: $('#name').val().trim(),
                 profile: $('#photo').val(),
@@ -186,17 +186,17 @@ $(document).ready(function() {
                     $('#q10').val(),
                 ]
             };
-            //Grabs current URL of website
+           
             var currentURL = window.location.origin;
-            //AJAX posts the data to friends API.
+          
             $.post(currentURL + "/api/friends", newFriend, function(data) {
-                //Grab the result from the AJAX post so that the best match's name and photo are displayed.
+            
                 $("#matchName").text(data.matchName);
                 $("#matchPic").attr("src", data.matchProfile);
             });
-            // Show the modal with the best match
+  
                 $('.modal').modal();
-            //clear form after submission
+         
             $('#name').val("");
             $('#photo').val("");
             $('#q1').val("");
@@ -212,7 +212,7 @@ $(document).ready(function() {
         } else {
             alert("Please fill out ALL fields before submitting survey!")
         }
-        // return false;
+      
     });
 });
 </script>
